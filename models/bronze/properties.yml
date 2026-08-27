@@ -23,7 +23,7 @@ models:
   - name: stg_dim_customer
     columns:
       - name: customer_sk
-        description: "Identifier key to check the store.
+        description: "Identifier key to check the store."
         tests:
           - not_null
           - unique
