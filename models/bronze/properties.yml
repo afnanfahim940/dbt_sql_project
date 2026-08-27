@@ -1,0 +1,28 @@
+models:
+  - name: stg_fact_sales
+    description: "Staging model containing sales transaction data."
+    columns:
+      - name: sales_id
+        description: "Unique identifier for each sales transaction."
+        tests:
+          - unique
+          - not_null
+      - name: store_sk
+        description: "Surrogate key identifying the store."
+        tests:
+          - not_null
+      - name: customer_sk
+        description: "Surrogate key identifying the customer."
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+              to: ref('stg_dim_customer')
+              field: customer_sk
+
+  - name: stg_dim_customer
+    columns:
+      - name: customer_sk
+        tests:
+          - not_null
+          - unique
